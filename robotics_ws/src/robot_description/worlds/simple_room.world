@@ -1,0 +1,205 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="simple_room">
+    <!-- Include the default Gazebo world -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Physics parameters -->
+    <physics name="1ms" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>1000.0</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+    </physics>
+
+    <!-- A simple room with walls -->
+    <!-- Floor -->
+    <model name="floor">
+      <pose>0 0 0 0 0 0</pose>
+      <link name="floor_link">
+        <collision name="floor_collision">
+          <geometry>
+            <box>
+              <size>10 10 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="floor_visual">
+          <geometry>
+            <box>
+              <size>10 10 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.0 0.0 0.0 1</specular>
+          </material>
+        </visual>
+        <inertial>
+          <mass>1e6</mass>
+          <inertia>
+            <ixx>1e6</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1e6</iyy>
+            <iyz>0</iyz>
+            <izz>1e6</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+    <!-- Walls -->
+    <model name="wall_1">
+      <pose>-5 0 2.5 0 0 0</pose>
+      <link name="wall_1_link">
+        <collision name="wall_1_collision">
+          <geometry>
+            <box>
+              <size>0.1 10 5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="wall_1_visual">
+          <geometry>
+            <box>
+              <size>0.1 10 5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.0 0.0 0.0 1</specular>
+          </material>
+        </visual>
+        <inertial>
+          <mass>1e6</mass>
+          <inertia>
+            <ixx>1e6</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1e6</iyy>
+            <iyz>0</iyz>
+            <izz>1e6</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+    <model name="wall_2">
+      <pose>5 0 2.5 0 0 0</pose>
+      <link name="wall_2_link">
+        <collision name="wall_2_collision">
+          <geometry>
+            <box>
+              <size>0.1 10 5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="wall_2_visual">
+          <geometry>
+            <box>
+              <size>0.1 10 5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.0 0.0 0.0 1</specular>
+          </material>
+        </visual>
+        <inertial>
+          <mass>1e6</mass>
+          <inertia>
+            <ixx>1e6</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1e6</iyy>
+            <iyz>0</iyz>
+            <izz>1e6</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+    <model name="wall_3">
+      <pose>0 -5 2.5 0 0 1.5707</pose>
+      <link name="wall_3_link">
+        <collision name="wall_3_collision">
+          <geometry>
+            <box>
+              <size>0.1 10 5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="wall_3_visual">
+          <geometry>
+            <box>
+              <size>0.1 10 5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.0 0.0 0.0 1</specular>
+          </material>
+        </visual>
+        <inertial>
+          <mass>1e6</mass>
+          <inertia>
+            <ixx>1e6</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1e6</iyy>
+            <iyz>0</iyz>
+            <izz>1e6</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+    <model name="wall_4">
+      <pose>0 5 2.5 0 0 1.5707</pose>
+      <link name="wall_4_link">
+        <collision name="wall_4_collision">
+          <geometry>
+            <box>
+              <size>0.1 10 5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="wall_4_visual">
+          <geometry>
+            <box>
+              <size>0.1 10 5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.0 0.0 0.0 1</specular>
+          </material>
+        </visual>
+        <inertial>
+          <mass>1e6</mass>
+          <inertia>
+            <ixx>1e6</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1e6</iyy>
+            <iyz>0</iyz>
+            <izz>1e6</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+  </world>
+</sdf>
