@@ -1,3 +1,7 @@
+---
+title: Research Findings
+---
+
 # Research Findings: Physical AI & Humanoid Robotics
 
 ## Dependencies and Assumptions

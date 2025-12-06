@@ -1,3 +1,7 @@
+---
+title: Feature Tasks
+---
+
 # Feature Tasks: Physical AI & Humanoid Robotics
 
 ## Implementation Strategy

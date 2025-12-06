@@ -41,7 +41,8 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/HZTech/final_hackathon/tree/master/docs/',
+            'https://github.com/salmano7/physical-ai-humanoid-robotics-book/tree/main/docs/',
+          routeBasePath: '/', // Serve docs at root
         },
         blog: false, // Disable blog
         theme: {

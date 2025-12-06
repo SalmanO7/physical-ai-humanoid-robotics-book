@@ -1,3 +1,7 @@
+---
+title: Data Model
+---
+
 # Data Model: Physical AI & Humanoid Robotics
 
 ## Key Entities

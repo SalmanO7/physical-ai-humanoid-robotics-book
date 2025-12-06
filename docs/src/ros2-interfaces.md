@@ -1,3 +1,7 @@
+---
+title: ROS 2 Interfaces
+---
+
 # ROS 2 Interface Definitions
 
 This section describes the ROS 2 message (`.msg`), service (`.srv`), and action (`.action`) definitions that serve as the API contracts for the Physical AI & Humanoid Robotics system.

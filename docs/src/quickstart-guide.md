@@ -1,3 +1,7 @@
+---
+title: Quickstart Guide
+---
+
 # Quickstart Guide: Physical AI & Humanoid Robotics
 
 This quickstart guide provides a basic overview to get the Physical AI & Humanoid Robotics project up and running in a simulated environment.

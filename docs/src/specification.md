@@ -1,3 +1,7 @@
+---
+title: Feature Specification
+---
+
 # Feature Specification: Physical AI & Humanoid Robotics
 
 ## Overview

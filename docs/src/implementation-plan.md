@@ -1,3 +1,7 @@
+---
+title: Implementation Plan
+---
+
 # Implementation Plan: Physical AI & Humanoid Robotics
 
 ## Summary
