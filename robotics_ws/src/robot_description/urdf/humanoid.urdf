@@ -87,6 +87,43 @@
         </linear_acceleration>
       </imu>
     </sensor>
+
+    <!-- Depth Camera -->
+    <sensor name="depth_camera" type="depth">
+      <origin xyz="0.1 0 0.1" rpy="0 0 0"/>
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov> <!-- 60 degrees -->
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>10.0</far>
+        </clip>
+      </camera>
+    </sensor>
+
+    <!-- LiDAR -->
+    <sensor name="lidar" type="ray">
+      <origin xyz="0.1 0 0.2" rpy="0 0 0"/>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1.0</resolution>
+            <min_angle>-3.14159</min_angle> <!-- -180 degrees -->
+            <max_angle>3.14159</max_angle>   <!-- 180 degrees -->
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+    </sensor>
   </link>
 
   <joint name="head_joint" type="fixed">

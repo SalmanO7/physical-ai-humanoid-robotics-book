@@ -1,0 +1,15 @@
+# NavigateToPose.action
+# Action to command the robot to navigate to a target pose.
+
+# Goal: The target pose to navigate to
+geometry_msgs/PoseStamped target_pose
+
+---
+# Result: Success or failure of the navigation
+bool success
+string message
+
+---
+# Feedback: Progress information during navigation
+float64 distance_remaining
+float64 angle_remaining

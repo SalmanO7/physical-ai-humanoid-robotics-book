@@ -54,14 +54,14 @@ Independent Test: Issue navigation command and observe successful navigation and
 
 - [X] T030 [US1] Develop an initial `ActionPlan.msg` in `vla_pipeline/msg/` for high-level tasks.
 - [X] T032 [US1] Set up VSLAM for localization using Isaac ROS in `perception_pkg/src/vslam_node.py`.
-- [ ] T033 [US1] Add LiDAR and Depth Camera sensors to humanoid URDF and configure in Gazebo.
-- [ ] T034 [US1] Integrate sensor data from Gazebo to VSLAM node for environment mapping.
-- [ ] T035 [US1] Implement Nav2 navigation planning in `navigation_pkg/src/nav2_planner_node.py`.
-- [ ] T036 [US1] Define `NavigateToPose.action` in `navigation/action/`.
-- [ ] T037 [US1] Create ROS 2 action server for `NavigateToPose.action` in `navigation_pkg/src/nav2_action_server.py`.
-- [ ] T038 [US1] Integrate `ActionPlan.msg` to trigger `NavigateToPose.action` goal in `vla_pipeline/src/action_executor.py`.
-- [ ] T039 [US1] Log simulation navigation data to MCP server for versioning and analysis.
-- [ ] T040 [US1] Document the navigation pipeline flow in `docs/src/navigation.md` using DocuSource.
+- [X] T033 [US1] Add LiDAR and Depth Camera sensors to humanoid URDF and configure in Gazebo.
+- [X] T034 [US1] Integrate sensor data from Gazebo to VSLAM node for environment mapping.
+- [X] T035 [US1] Implement Nav2 navigation planning in `navigation_pkg/src/nav2_planner_node.py`.
+- [X] T036 [US1] Define `NavigateToPose.action` in `navigation/action/`.
+- [X] T037 [US1] Create ROS 2 action server for `NavigateToPose.action` in `navigation_pkg/src/nav2_action_server.py`.
+- [X] T038 [US1] Integrate `ActionPlan.msg` to trigger `NavigateToPose.action` goal in `vla_pipeline/src/action_executor.py`.
+- [X] T039 [US1] Log simulation navigation data to MCP server for versioning and analysis.
+- [X] T040 [US1] Document the navigation pipeline flow in `docs/src/navigation.md` using DocuSource.
 
 ## Phase 4: User Story 2 - Object Identification & Manipulation (P1)
 

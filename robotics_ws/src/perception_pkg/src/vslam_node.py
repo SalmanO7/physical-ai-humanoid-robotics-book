@@ -8,10 +8,10 @@ using Isaac ROS for localization in the simulated environment.
 
 import rclpy
 from rclpy.node import Node
-from sensor_msgs.msg import Image, CameraInfo
+from sensor_msgs.msg import Image, CameraInfo, LaserScan
 from geometry_msgs.msg import PoseStamped
 from nav_msgs.msg import Odometry
-from visualization_msgs.msg import MarkerArray
+from visualization_msgs.msg import MarkerArray, Marker
 import numpy as np
 
 
@@ -43,12 +43,21 @@ class VSLAMNode(Node):
             10
         )
 
+        # LiDAR subscriber for environment mapping
+        self.lidar_sub = self.create_subscription(
+            LaserScan,
+            'scan',  # LiDAR data from Gazebo
+            self.lidar_callback,
+            10
+        )
+
         # Timer for processing loop
         self.timer = self.create_timer(0.1, self.process_vslam)
 
         # Internal state
         self.current_image = None
         self.camera_info = None
+        self.lidar_data = None
         self.current_pose = np.eye(4)  # 4x4 identity matrix for pose
         self.map_points = []
 
@@ -64,9 +73,47 @@ class VSLAMNode(Node):
         self.camera_info = msg
         self.get_logger().debug('Received camera info')
 
+    def lidar_callback(self, msg):
+        """Process incoming LiDAR data for environment mapping."""
+        self.lidar_data = msg
+        self.get_logger().debug(f'Received LiDAR scan with {len(msg.ranges)} ranges')
+
+        # Process LiDAR data for environment mapping
+        self.process_lidar_for_mapping(msg)
+
+    def process_lidar_for_mapping(self, lidar_msg):
+        """Process LiDAR data to build environment map."""
+        # Convert LiDAR ranges to Cartesian coordinates
+        angle_min = lidar_msg.angle_min
+        angle_increment = lidar_msg.angle_increment
+
+        # Clear previous map points
+        self.map_points = []
+
+        # Convert each range reading to a point in space
+        for i, range_val in enumerate(lidar_msg.ranges):
+            if not (lidar_msg.range_min <= range_val <= lidar_msg.range_max):
+                # Skip invalid range readings
+                continue
+
+            angle = angle_min + i * angle_increment
+
+            # Convert to Cartesian coordinates (relative to robot)
+            x = range_val * np.cos(angle)
+            y = range_val * np.sin(angle)
+
+            # Add to map points
+            self.map_points.append((x, y))
+
+        self.get_logger().debug(f'Processed {len(self.map_points)} map points from LiDAR data')
+
     def process_vslam(self):
         """Main VSLAM processing loop."""
         if self.current_image is None or self.camera_info is None:
+            # Still process LiDAR data even if camera data is not available
+            if self.lidar_data is not None:
+                self.get_logger().debug('Processing LiDAR-only data')
+                self.publish_map()
             return
 
         # Simulate VSLAM processing
@@ -81,6 +128,10 @@ class VSLAMNode(Node):
 
         # Publish pose
         self.publish_pose()
+
+        # Publish map if we have LiDAR data
+        if self.lidar_data is not None:
+            self.publish_map()
 
     def update_pose(self):
         """Update the robot's estimated pose based on visual features."""
@@ -126,6 +177,45 @@ class VSLAMNode(Node):
         pose_msg.pose.orientation.w = 1.0
 
         self.pose_pub.publish(pose_msg)
+
+    def publish_map(self):
+        """Publish the environment map based on LiDAR data."""
+        if not self.map_points:
+            return
+
+        marker_array = MarkerArray()
+
+        # Create markers for each map point
+        for i, (x, y) in enumerate(self.map_points):
+            marker = Marker()
+            marker.header.stamp = self.get_clock().now().to_msg()
+            marker.header.frame_id = 'map'  # or 'odom' depending on your coordinate frame
+            marker.ns = 'lidar_map'
+            marker.id = i
+            marker.type = Marker.SPHERE
+            marker.action = Marker.ADD
+
+            # Position (transform from robot frame to map frame if needed)
+            marker.pose.position.x = x  # This would need transformation in a real implementation
+            marker.pose.position.y = y
+            marker.pose.position.z = 0.0
+            marker.pose.orientation.w = 1.0
+
+            # Scale
+            marker.scale.x = 0.05  # 5cm spheres
+            marker.scale.y = 0.05
+            marker.scale.z = 0.05
+
+            # Color (blue for LiDAR points)
+            marker.color.r = 0.0
+            marker.color.g = 0.0
+            marker.color.b = 1.0
+            marker.color.a = 0.8  # 80% alpha
+
+            marker_array.markers.append(marker)
+
+        self.map_pub.publish(marker_array)
+        self.get_logger().debug(f'Published map with {len(marker_array.markers)} points')
 
 
 def main(args=None):
