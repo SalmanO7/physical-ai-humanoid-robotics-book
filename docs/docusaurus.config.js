@@ -11,14 +11,14 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-username.github.io',
+  url: 'https://salmano7.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<org-name>/<repo-name>/'
-  baseUrl: '/final_hackathon/',
+  baseUrl: '/physical-ai-humanoid-robotics-book/',
 
   // GitHub pages deployment config.
-  organizationName: 'HZTech', // Usually your GitHub org/user name.
-  projectName: 'final_hackathon', // Usually your repo name.
+  organizationName: 'SalmanO7', // Usually your GitHub org/user name.
+  projectName: 'physical-ai-humanoid-robotics-book', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -41,7 +41,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/salmano7/physical-ai-humanoid-robotics-book/tree/main/docs/',
+            'https://github.com/SalmanO7/physical-ai-humanoid-robotics-book/tree/main/docs/',
           routeBasePath: '/', // Serve docs at root
         },
         blog: false, // Disable blog
@@ -71,7 +71,7 @@ const config = {
             label: 'Documentation',
           },
           {
-            href: 'https://github.com/HZTech/final_hackathon',
+            href: 'https://github.com/SalmanO7/physical-ai-humanoid-robotics-book',
             label: 'GitHub',
             position: 'right',
           },
@@ -103,7 +103,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/HZTech/final_hackathon',
+                href: 'https://github.com/SalmanO7/physical-ai-humanoid-robotics-book',
               },
             ],
           },
