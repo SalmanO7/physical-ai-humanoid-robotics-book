@@ -60,16 +60,15 @@ ros2 launch robot_control gazebo_simulation.launch.py # To spawn in Gazebo
 
 Start the Unity Editor or Isaac Sim application and load the relevant scene/assets as per their documentation to connect to the ROS 2 environment.
 
-## 4. Basic Interaction: Voice Command
+## 4. Basic Interaction: Navigation Commands
 
 Once the simulation is running and the VLA pipeline is active:
 
-1. Run the Whisper node (example):
+1. Send a navigation command to the robot (example):
    ```bash
-   ros2 run vla_pipeline whisper_node
+   ros2 topic pub /navigation_command std_msgs/String "data: 'navigate_to_table'"
    ```
-2. Speak a command (e.g., "Robot, go to the table") into your microphone.
-3. Observe the robot's behavior in the simulator.
+2. Observe the robot's behavior in the simulator as it processes the navigation command.
 
 ## 5. Next Steps
 

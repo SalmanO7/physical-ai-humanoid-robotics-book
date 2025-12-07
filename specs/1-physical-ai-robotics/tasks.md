@@ -10,7 +10,7 @@
 
 ## Implementation Strategy
 
-The implementation will follow a phased approach, starting with foundational setup and moving through user stories in priority order (P1 first, then P2). Each user story will be developed as an independently testable increment. Emphasis will be placed on an MVP-first strategy, aiming to get User Story 1 functional end-to-end before integrating the more complex manipulation aspects of User Story 2. Continuous integration with the MCP server for monitoring and DocuSource for documentation will be maintained throughout.
+The implementation will follow a phased approach, starting with foundational setup and moving through user stories in priority order (P1 first, then P2). Each user story will be developed as an independently testable increment. Emphasis will be placed on an MVP-first strategy, aiming to get User Story 1 (Navigation) functional end-to-end before integrating the more complex manipulation aspects of User Story 2. Continuous integration with the MCP server for monitoring and DocuSource for documentation will be maintained throughout.
 
 ## Phase 1: Setup
 
@@ -47,18 +47,13 @@ Goal: Implement core ROS 2 infrastructure and basic simulation capabilities, ena
 - [X] T024 Test gravity, basic collisions, and physical interactions of the spawned humanoid in Gazebo.
 - [X] T025 Integrate MCP server API to monitor control nodes and log performance for `robot_control` package.
 
-## Phase 3: User Story 1 - Humanoid Voice Command & Navigation (P1)
+## Phase 3: User Story 1 - Humanoid Navigation (P1)
 
-Goal: Enable the humanoid robot to understand voice commands and navigate autonomously in a simulated environment.
-Independent Test: Issue "Robot, move to the target area" and observe successful navigation and obstacle avoidance.
+Goal: Enable the humanoid robot to navigate autonomously in a simulated environment using pre-defined commands.
+Independent Test: Issue navigation command and observe successful navigation and obstacle avoidance.
 
-- [X] T026 [US1] Define `VoiceCommandText.msg` in `vla_pipeline/msg/`.
-- [ ] T027 [US1] Integrate Whisper for speech-to-text transcription in `vla_pipeline/src/whisper_node.py`.
-- [ ] T028 [US1] Create ROS 2 node for `whisper_node.py` publishing `VoiceCommandText.msg`.
-- [ ] T029 [US1] Create LLM integration module for task planning in `vla_pipeline/src/llm_planner.py`.
-- [ ] T030 [US1] Develop an initial `ActionPlan.msg` in `vla_pipeline/msg/` for high-level tasks.
-- [ ] T031 [US1] Create a ROS 2 node to subscribe to `VoiceCommandText.msg` and publish `ActionPlan.msg` using LLM.
-- [ ] T032 [US1] Set up VSLAM for localization using Isaac ROS in `perception_pkg/src/vslam_node.py`.
+- [X] T030 [US1] Develop an initial `ActionPlan.msg` in `vla_pipeline/msg/` for high-level tasks.
+- [X] T032 [US1] Set up VSLAM for localization using Isaac ROS in `perception_pkg/src/vslam_node.py`.
 - [ ] T033 [US1] Add LiDAR and Depth Camera sensors to humanoid URDF and configure in Gazebo.
 - [ ] T034 [US1] Integrate sensor data from Gazebo to VSLAM node for environment mapping.
 - [ ] T035 [US1] Implement Nav2 navigation planning in `navigation_pkg/src/nav2_planner_node.py`.
@@ -66,7 +61,7 @@ Independent Test: Issue "Robot, move to the target area" and observe successful 
 - [ ] T037 [US1] Create ROS 2 action server for `NavigateToPose.action` in `navigation_pkg/src/nav2_action_server.py`.
 - [ ] T038 [US1] Integrate `ActionPlan.msg` to trigger `NavigateToPose.action` goal in `vla_pipeline/src/action_executor.py`.
 - [ ] T039 [US1] Log simulation navigation data to MCP server for versioning and analysis.
-- [ ] T040 [US1] Document the VLA navigation pipeline flow in `docs/src/vl-navigation.md` using DocuSource.
+- [ ] T040 [US1] Document the navigation pipeline flow in `docs/src/navigation.md` using DocuSource.
 
 ## Phase 4: User Story 2 - Object Identification & Manipulation (P1)
 
@@ -124,12 +119,12 @@ Goal: Integrate all components for an end-to-end autonomous humanoid demonstrati
 ## Parallel Execution Examples
 
 - **User Story 1 & 2 Core Development**:
-  - `T026 [US1] Define VoiceCommandText.msg` (vla_pipeline)
+  - `T030 [US1] Develop ActionPlan.msg` (vla_pipeline)
   - `T041 [US2] Generate synthetic datasets using Isaac Sim` (data)
 - **ROS 2 Node Implementation & Documentation**:
-  - `T027 [US1] Integrate Whisper for speech-to-text transcription` (vla_pipeline)
+  - `T032 [US1] Set up VSLAM for localization` (perception_pkg)
   - `T056 [US3] Develop comprehensive README.md for robot_description` (robot_description)
 
 ## Suggested MVP Scope
 
-The Minimum Viable Product (MVP) for this feature focuses on User Story 1: **Humanoid Voice Command & Navigation**. This provides a foundational, independently testable increment demonstrating the core value proposition of voice-controlled autonomous movement within a simulated environment.
+The Minimum Viable Product (MVP) for this feature focuses on User Story 1: **Humanoid Navigation**. This provides a foundational, independently testable increment demonstrating the core value proposition of autonomous movement within a simulated environment using pre-defined commands.

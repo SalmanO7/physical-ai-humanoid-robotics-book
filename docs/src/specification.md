@@ -6,28 +6,28 @@ title: Feature Specification
 
 ## Overview
 
-This project aims to connect digital AI with physical humanoid robots, focusing on embodied intelligence. The system will allow users to command a humanoid robot via voice to navigate, identify objects, and manipulate them within simulated environments.
+This project aims to connect digital AI with physical humanoid robots, focusing on embodied intelligence. The system will allow users to command a humanoid robot using pre-defined navigation commands to navigate, identify objects, and manipulate them within simulated environments.
 
 ## User Stories
 
-### User Story 1 - Humanoid Voice Command & Navigation (Priority: P1)
+### User Story 1 - Humanoid Navigation (Priority: P1)
 
-A user wants to command the humanoid robot via voice to navigate to a specific location within a simulated environment.
+A user wants to command the humanoid robot to navigate to a specific location within a simulated environment using pre-defined navigation commands.
 
-**Independent Test**: Can be fully tested by issuing a voice command like "Robot, go to the kitchen" and observing the robot successfully plan a path, navigate, and reach the specified destination in simulation.
+**Independent Test**: Can be fully tested by issuing a navigation command and observing the robot successfully plan a path, navigate, and reach the specified destination in simulation.
 
 **Acceptance Scenarios**:
-1. When the user issues a voice command like "Robot, move to the target area", the robot accurately converts the voice command to text, generates a navigation plan, and executes the plan to reach the target area.
+1. When the user issues a navigation command, the robot generates a navigation plan and executes the plan to reach the target area.
 2. When an obstacle appears in its path during navigation, the robot identifies the obstacle and replans its path to avoid collision while still aiming for the target.
 
 ### User Story 2 - Object Identification & Manipulation (Priority: P1)
 
-A user wants the humanoid robot to identify and manipulate a specified object in the environment after navigating to its vicinity.
+A user wants the humanoid robot to identify and manipulate a specified object in the environment after navigating to its vicinity using pre-defined navigation commands.
 
-**Independent Test**: Can be fully tested by placing a known object in the simulated environment, commanding the robot to navigate to its general area, and then commanding it to "find the red cube" and "pick it up".
+**Independent Test**: Can be fully tested by placing a known object in the simulated environment, commanding the robot to navigate to its general area, and then commanding it to find and manipulate the object.
 
 **Acceptance Scenarios**:
-1. When the user issues a command like "Robot, identify the blue sphere and pick it up", the robot uses its vision system to locate the specified object, plans a grasping motion, and successfully manipulates (e.g., picks up) the object.
+1. When the user issues navigation and manipulation commands, the robot uses its vision system to locate the specified object, plans a grasping motion, and successfully manipulates (e.g., picks up) the object.
 2. When the robot attempts to manipulate an object that is out of reach or too heavy, the robot reports the inability to manipulate the object and suggests alternatives if possible.
 
 ### User Story 3 - ROS 2 System Integration (Priority: P2)
@@ -42,8 +42,8 @@ A developer wants to understand and interact with the core ROS 2 nodes, topics, 
 
 ## Functional Requirements
 
-- The system MUST accurately convert user voice commands into text instructions.
-- The system MUST interpret text instructions to generate high-level action plans for the humanoid robot.
+- The system MUST accept pre-defined navigation commands for the humanoid robot.
+- The system MUST interpret navigation commands to generate high-level action plans for the humanoid robot.
 - The system MUST translate high-level action plans into low-level ROS 2 commands for robot control.
 - The system MUST enable the humanoid robot to navigate autonomously within a simulated environment.
 - The system MUST enable the humanoid robot to perceive and identify objects in its environment using visual sensors.
@@ -54,22 +54,21 @@ A developer wants to understand and interact with the core ROS 2 nodes, topics, 
 - The system MUST leverage NVIDIA Isaac Sim for synthetic data generation and realistic simulation.
 - The system MUST use NVIDIA Isaac ROS for VSLAM capabilities.
 - The system MUST implement Nav2 for robust path planning and navigation.
-- The system MUST use Whisper for voice-to-text conversion.
 - The system MUST integrate an LLM for complex action planning and decision-making.
 
 ## Key Entities
 
 - **Humanoid Robot**: The physical (simulated) entity capable of locomotion, perception, and manipulation.
 - **Environment**: The simulated world where the robot operates, containing static and dynamic obstacles, and target objects.
-- **Voice Command**: User input in natural language to direct the robot.
 - **Object**: Items within the environment that the robot can perceive and manipulate.
 - **Action Plan**: A sequence of high-level tasks generated by the LLM.
+- **Navigation Command**: Pre-defined commands used to direct robot movement.
 - **ROS 2 System**: The middleware facilitating communication and control within the robot's software stack.
 
 ## Success Criteria
 
-- The humanoid robot successfully executes voice commands involving navigation and object manipulation with an 80% success rate in simulated environments.
-- Voice command-to-action plan generation and execution (for simple tasks) completes within an average of 5 seconds.
+- The humanoid robot successfully executes navigation commands involving navigation and object manipulation with an 80% success rate in simulated environments.
+- Command-to-action plan generation and execution (for simple tasks) completes within an average of 5 seconds.
 - The robot's navigation system achieves target location within 10% deviation 95% of the time, even with dynamic obstacles.
 - Object identification accuracy is 90% for known objects in varied lighting and orientations.
 - The robot can successfully grasp and move 75% of designated objects of varying sizes and weights.

@@ -7,25 +7,25 @@
 
 ## Summary
 
-This plan outlines the implementation strategy to bridge digital AI with physical humanoid robotics, enabling an autonomous humanoid to understand voice commands, plan paths, navigate, identify objects, and manipulate them within simulated environments. The approach is phased, focusing on foundational setup, control systems, simulation, AI perception, and the Vision-Language-Action (VLA) pipeline, culminating in a fully integrated capstone demonstration. The plan explicitly incorporates MCP server integration for project management, remote execution, logging, and data versioning, along with DocuSource for documentation deployment.
+This plan outlines the implementation strategy to bridge digital AI with physical humanoid robotics, enabling an autonomous humanoid to understand navigation commands, plan paths, navigate, identify objects, and manipulate them within simulated environments. The approach is phased, focusing on foundational setup, control systems, simulation, AI perception, and the Vision-Language-Action (VLA) pipeline, culminating in a fully integrated capstone demonstration. The plan explicitly incorporates MCP server integration for project management, remote execution, logging, and data versioning, along with DocuSource for documentation deployment.
 
 ## Technical Context
 
-**Language/Version**: Python 3.x (ROS 2 rclpy, LLM integration, Whisper), C++ (performance-critical ROS 2 nodes)
-**Primary Dependencies**: ROS 2, Gazebo, Unity, NVIDIA Isaac (Sim, ROS, Nav2), Whisper, Large Language Models (LLMs), MCP Server, DocuSource
+**Language/Version**: Python 3.x (ROS 2 rclpy, LLM integration), C++ (performance-critical ROS 2 nodes)
+**Primary Dependencies**: ROS 2, Gazebo, Unity, NVIDIA Isaac (Sim, ROS, Nav2), Large Language Models (LLMs), MCP Server, DocuSource
 **Storage**: N/A (real-time control, no persistent storage for feature state within the robot's operational loop), but MCP server will store datasets and experiment results.
 **Testing**: ROS 2 testing frameworks (`rostest`, `gtest`), simulation-based functional testing, integration tests between modules, continuous monitoring via MCP server.
 **Target Platform**: Linux (Ubuntu 22.04 LTS for ROS 2), Windows for Unity development.
 **Project Type**: Robotics Control System / AI Integration
 **Performance Goals**:
--   Voice command-to-action plan generation and execution for simple tasks: average completion within 5 seconds (SC-002)
+-   Command-to-action plan generation and execution for simple tasks: average completion within 5 seconds (SC-002)
 -   ROS 2 inter-module communication latency: <100ms during continuous operation (SC-006)
 -   Robot navigation accuracy: target location achieved within 10% deviation 95% of the time, including dynamic obstacle avoidance (SC-003)
 -   Object identification accuracy: 90% for known objects in varied conditions (SC-004)
 -   Object manipulation success rate: 75% for designated objects of varying sizes and weights (SC-005)
 **Constraints**:
 -   Real-time processing and responsiveness for effective robot control.
--   Seamless integration between diverse software frameworks (ROS 2, NVIDIA Isaac, LLMs, Whisper, MCP Server, DocuSource).
+-   Seamless integration between diverse software frameworks (ROS 2, NVIDIA Isaac, LLMs, MCP Server, DocuSource).
 -   Fidelity of simulation for effective transfer learning to physical hardware.
 -   Security and access control for MCP server interactions.
 **Scale/Scope**: Development and demonstration of a single autonomous humanoid robot operating within a controlled simulated environment, focusing on the core VLA pipeline and capstone objectives, with robust project management and documentation support via MCP server and DocuSource.
@@ -72,7 +72,7 @@ robotics_ws/                  # ROS 2 workspace root
 │   ├── perception_pkg/     # Isaac ROS VSLAM, object detection, sensor processing
 │   │   ├── src/
 │   │   └── package.xml
-│   └── vla_pipeline/       # Whisper, LLM integration, action planning, ROS 2 action servers
+│   └── vla_pipeline/       # LLM integration, action planning, ROS 2 action servers
 │       ├── src/
 │       └── package.xml
 ├── build/

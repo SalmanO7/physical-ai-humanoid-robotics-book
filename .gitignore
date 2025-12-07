@@ -26,3 +26,13 @@ out/
 *.a
 *.exe
 *.dll
+
+# ROS 2
+robotics_ws/build/
+robotics_ws/install/
+robotics_ws/log/
+*.log
+*.log.*
+.devel/
+install/
+log/

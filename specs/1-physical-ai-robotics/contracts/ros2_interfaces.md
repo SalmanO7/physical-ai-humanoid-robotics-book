@@ -6,7 +6,7 @@ This directory will contain the ROS 2 message (`.msg`), service (`.srv`), and ac
 
 -   **`robot_control/msg/JointState.msg`**: Defines the current state of robot joints (position, velocity, effort).
 -   **`perception/msg/ObjectDetection.msg`**: Defines detected objects in the environment (bounding box, class, confidence, pose).
--   **`vla_pipeline/msg/VoiceCommandText.msg`**: Defines the text transcript of a voice command.
+-   **`vla_pipeline/msg/NavigationCommand.msg`**: Defines a navigation command for the robot.
 -   **`vla_pipeline/msg/ActionPlan.msg`**: Defines a sequence of high-level actions.
 
 ## Service Definitions
