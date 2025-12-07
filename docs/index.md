@@ -4,7 +4,7 @@ title: Physical AI & Humanoid Robotics
 
 # Physical AI & Humanoid Robotics
 
-Welcome to the documentation for the Physical AI & Humanoid Robotics project. This book covers the design and implementation of an autonomous humanoid robot that can understand navigation commands, navigate, identify objects, and manipulate them within simulated environments.
+Welcome to the **Physical AI & Humanoid Robotics** documentation. This comprehensive book covers the design and implementation of an autonomous humanoid robot that can understand navigation commands, navigate, identify objects, and manipulate them within simulated environments.
 
 This project bridges digital AI with physical humanoid robots, enabling embodied intelligence through a Vision-Language-Action (VLA) pipeline.
 
@@ -19,26 +19,49 @@ This comprehensive guide covers:
 
 ## Getting Started
 
-<div className="button-container" style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '2rem'}}>
+Explore the documentation using these main sections:
 
-[<button className="button button--primary button--lg" style={{margin: '0.5rem'}}>Read Documentation</button>](./specification.md)
+<div className="row" style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '1rem', marginTop: '2rem', padding: '1rem'}}>
 
-[<button className="button button--secondary button--lg" style={{margin: '0.5rem'}}>View Implementation Plan</button>](./implementation-plan.md)
+<div className="col col--4" style={{minWidth: '250px', textAlign: 'center', padding: '1rem', border: '1px solid #ccc', borderRadius: '8px', backgroundColor: '#f8f9fa'}}>
 
-[<button className="button button--outline button--lg" style={{margin: '0.5rem'}}>Quick Start Guide</button>](./quickstart-guide.md)
+### 📘 Specification
+Detailed feature requirements and user scenarios
+
+[**Read Specification**](./specification.md)
 
 </div>
 
-## Table of Contents
+<div className="col col--4" style={{minWidth: '250px', textAlign: 'center', padding: '1rem', border: '1px solid #ccc', borderRadius: '8px', backgroundColor: '#e9ecef'}}>
 
-This documentation is organized into the following sections:
+### ⚙️ Implementation Plan
+Technical approach and project structure
 
-1. [Specification](./specification.md) - Detailed feature requirements and user scenarios
-2. [Implementation Plan](./implementation-plan.md) - Technical approach and project structure
-3. [Data Model](./data-model.md) - Key entities and their relationships
-4. [ROS 2 Interfaces](./ros2-interfaces.md) - API contracts for the system
-5. [Research Findings](./research-findings.md) - Dependencies and assumptions
-6. [Quickstart Guide](./quickstart-guide.md) - Getting started with the project
-7. [Feature Tasks](./feature-tasks.md) - Implementation tasks breakdown
+[**View Plan**](./implementation-plan.md)
 
-[Continue Reading →](./specification.md)
+</div>
+
+<div className="col col--4" style={{minWidth: '250px', textAlign: 'center', padding: '1rem', border: '1px solid #ccc', borderRadius: '8px', backgroundColor: '#dee2e6'}}>
+
+### 🚀 Quick Start
+Getting started with the project
+
+[**Quick Start Guide**](./quickstart-guide.md)
+
+</div>
+
+</div>
+
+## Complete Documentation
+
+Navigate through all sections of the book:
+
+- [Specification](./specification.md) - Detailed feature requirements and user scenarios
+- [Implementation Plan](./implementation-plan.md) - Technical approach and project structure
+- [Data Model](./data-model.md) - Key entities and their relationships
+- [ROS 2 Interfaces](./ros2-interfaces.md) - API contracts for the system
+- [Research Findings](./research-findings.md) - Dependencies and assumptions
+- [Quickstart Guide](./quickstart-guide.md) - Getting started with the project
+- [Feature Tasks](./feature-tasks.md) - Implementation tasks breakdown
+
+[**Continue to Full Documentation →**](./specification.md)
